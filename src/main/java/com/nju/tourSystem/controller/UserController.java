@@ -1,6 +1,7 @@
 package com.nju.tourSystem.controller;
 
 
+import com.nju.tourSystem.entity.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -13,14 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Api("用户信息管理")
 @RestController
-public class userController {
-    private static final Logger logger= LoggerFactory.getLogger(userController.class);
+public class UserController {
+    private static final Logger logger= LoggerFactory.getLogger(UserController.class);
 
-    @ApiOperation("用户信息")
+    @ApiOperation("根据ID获取用户信息")
     @RequestMapping(value = "/query/{id}", method = RequestMethod.GET)
-    public String getStudent(@PathVariable int id) {
-        logger.info("开始查询某个用户信息");
-        return "success";
+    public User getUser(@PathVariable int id) {
+        User user = new User();
+        user.setEmail("541123989@qq.com");
+        return user;
     }
 
 
