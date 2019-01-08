@@ -1,29 +1,147 @@
 package com.nju.tourSystem.controller;
 
 
+import com.nju.tourSystem.entity.JsonResponse;
 import com.nju.tourSystem.entity.User;
+import com.nju.tourSystem.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Api("用户信息管理")
 @RestController
+@RequestMapping("/user/*")
 public class UserController {
+    @Autowired
+    UserService userService;
     private static final Logger logger= LoggerFactory.getLogger(UserController.class);
 
+    /**
+     *
+     * @author yqe
+     */
     @ApiOperation("根据ID获取用户信息")
-    @RequestMapping(value = "/query/{id}", method = RequestMethod.GET)
-    public User getUser(@PathVariable int id) {
-        User user = new User();
-        user.setEmail("541123989@qq.com");
-        return user;
+    @RequestMapping(value = "userinfo/{id}", method = RequestMethod.GET)
+    public ResponseEntity<JsonResponse> getUser(@PathVariable int id) {
+        JsonResponse r = new JsonResponse();
+        try {
+            User user = userService.getUserById(id);
+            r.setData(user);
+            r.setStatus("ok");
+        } catch (Exception e) {
+            r.setData(e.getClass().getName() + ":" + e.getMessage());
+            r.setStatus("error");
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok(r);
     }
+
+    /**
+     *
+     * @author yqe
+     */
+    @ApiOperation("获取用户列表")
+    @RequestMapping(value = "/userlist", method = RequestMethod.GET)
+    public ResponseEntity<JsonResponse> getUserList() {
+        JsonResponse r = new JsonResponse();
+        try {
+            List<User> userList = userService.getAllUser();
+            r.setData(userList);
+            r.setStatus("ok");
+        } catch (Exception e) {
+            r.setData(e.getClass().getName() + ":" + e.getMessage());
+            r.setStatus("error");
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok(r);
+    }
+
+    /**
+     *
+     * @author yqe
+     */
+    @ApiOperation("添加用户")
+    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
+    public ResponseEntity<JsonResponse> addUser(@RequestBody User user) {
+        JsonResponse r = new JsonResponse();
+        try {
+            Boolean state = userService.addUser(user);
+            r.setData(state);
+            r.setStatus("ok");
+        } catch (Exception e) {
+            r.setData(e.getClass().getName() + ":" + e.getMessage());
+            r.setStatus("error");
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok(r);
+    }
+
+    /**
+     *
+     * @author yqe
+     */
+    @ApiOperation("更新用户信息")
+    @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
+    public ResponseEntity<JsonResponse> updateUser(@RequestBody User user) {
+        JsonResponse r = new JsonResponse();
+        try {
+            Boolean state = userService.updateUser(user);
+            r.setData(state);
+            r.setStatus("ok");
+        } catch (Exception e) {
+            r.setData(e.getClass().getName() + ":" + e.getMessage());
+            r.setStatus("error");
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok(r);
+    }
+
+    /**
+     *
+     * @author yqe
+     */
+    @ApiOperation("登录验证")
+    @RequestMapping(value = "/login/{email},{password}", method = RequestMethod.POST)
+    public ResponseEntity<JsonResponse> login(@PathVariable("email") String email, @PathVariable("password") String password) {
+        JsonResponse r = new JsonResponse();
+        try {
+            Boolean state = userService.login(email, password);
+            r.setData(state);
+            r.setStatus("ok");
+        } catch (Exception e) {
+            r.setData(e.getClass().getName() + ":" + e.getMessage());
+            r.setStatus("error");
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok(r);
+    }
+
+    /**
+     *
+     * @author yqe
+     */
+    @ApiOperation("查找用户")
+    @RequestMapping(value = "/searchUser/{keyword}", method = RequestMethod.POST)
+    public ResponseEntity<JsonResponse> login(@PathVariable("keyword") String keyword) {
+        JsonResponse r = new JsonResponse();
+        try {
+            List<User> userList = userService.searchUser(keyword);
+            r.setData(userList);
+            r.setStatus("ok");
+        } catch (Exception e) {
+            r.setData(e.getClass().getName() + ":" + e.getMessage());
+            r.setStatus("error");
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok(r);
+    }
+
 
 
 }

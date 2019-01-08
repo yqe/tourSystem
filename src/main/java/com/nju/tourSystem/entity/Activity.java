@@ -4,6 +4,8 @@ public class Activity {
     private int id;
     private String name;
     private String description;
+    private String createdTime;
+    private String deadline;
     private int organizerId;
     private int maxNum;
 
@@ -28,6 +30,22 @@ public class Activity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(String createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public String getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(String deadline) {
+        this.deadline = deadline;
     }
 
     public int getOrganizerId() {
