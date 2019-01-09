@@ -53,4 +53,9 @@ public class ParticipantServiceImpl implements ParticipantService {
     public Boolean delete(int id) {
         return null;
     }
+
+    @Override
+    public List<Integer> searchHotActivity() {
+        return null;
+    }
 }

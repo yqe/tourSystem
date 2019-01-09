@@ -13,4 +13,6 @@ public interface ParticipantService {
     List<Participant> getParticipantList(int aid);
     List<Participant> getApplicationList(int aid);
     Boolean delete(int id);
+    //返回参与人数多的活动
+    List<Integer> searchHotActivity();
 }
