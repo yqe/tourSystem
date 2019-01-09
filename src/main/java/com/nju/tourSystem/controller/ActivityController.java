@@ -71,7 +71,7 @@ public class ActivityController {
      * @author yqe
      */
     @ApiOperation("添加出游")
-    @RequestMapping(value = "/addActivity", method = RequestMethod.GET)
+    @RequestMapping(value = "/addActivity", method = RequestMethod.POST)
     public ResponseEntity<JsonResponse> addActivity(@RequestBody Activity activity) {
         JsonResponse r = new JsonResponse();
         try {
@@ -91,7 +91,7 @@ public class ActivityController {
      * @author yqe
      */
     @ApiOperation("更新出游信息")
-    @RequestMapping(value = "/updateActivity", method = RequestMethod.GET)
+    @RequestMapping(value = "/updateActivity", method = RequestMethod.POST)
     public ResponseEntity<JsonResponse> updateActivity(@RequestBody Activity activity) {
         JsonResponse r = new JsonResponse();
         try {
