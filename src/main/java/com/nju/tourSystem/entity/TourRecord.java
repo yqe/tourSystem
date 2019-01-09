@@ -1,6 +1,6 @@
 package com.nju.tourSystem.entity;
 
-public class tourRecord {
+public class TourRecord {
     private int id;
     private int uid;
     private String  title;
@@ -8,7 +8,7 @@ public class tourRecord {
     private String  publishTime;
     private int readNum;
 
-    public tourRecord() {
+    public TourRecord() {
     }
 
     public int getId() {
