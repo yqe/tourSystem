@@ -35,4 +35,7 @@ public interface ParticipantMapper {
     @UpdateProvider(type = ParticipantProvider.class,method = "update")
     Boolean update(@Param("participant")Participant participant);
 
+    @Select("SELECT aid FROM participant GROUP BY aid ORDER BY count(aid) DESC")
+    List<Integer> searchHotActivity();
+
 }

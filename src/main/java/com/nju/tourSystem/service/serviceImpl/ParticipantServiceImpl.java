@@ -51,11 +51,11 @@ public class ParticipantServiceImpl implements ParticipantService {
 
     @Override
     public Boolean delete(int id) {
-        return null;
+        return participantMapper.delete(id);
     }
 
     @Override
     public List<Integer> searchHotActivity() {
-        return null;
+        return participantMapper.searchHotActivity();
     }
 }
