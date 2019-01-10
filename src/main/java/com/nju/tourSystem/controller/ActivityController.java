@@ -152,6 +152,30 @@ public class ActivityController {
 
     /**
      *
+     * @author xujiangcheng
+     */
+    @ApiOperation("参加人数多的出游活动")
+    @RequestMapping(value = "/hotActivity", method = RequestMethod.GET)
+    public ResponseEntity<JsonResponse> hotActivity() {
+        JsonResponse r = new JsonResponse();
+        try {
+            List<Activity> activities = new ArrayList<>();
+            List<Integer> aid_list= participantService.searchHotActivity();
+            for(int i=0;i<aid_list.size();i++){
+                activities.add(activityService.getActivityById(aid_list.get(i)));
+            }
+            r.setData(activities);
+            r.setStatus("ok");
+        } catch (Exception e) {
+            r.setData(e.getClass().getName() + ":" + e.getMessage());
+            r.setStatus("error");
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok(r);
+    }
+
+    /**
+     *
      * @author yqe
      */
     @ApiOperation("同意出游申请")
