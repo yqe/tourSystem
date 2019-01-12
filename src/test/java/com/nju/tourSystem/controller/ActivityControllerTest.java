@@ -99,6 +99,8 @@ public class ActivityControllerTest {
         activity.setMaxNum(20);
         activity.setName("测试");
         activity.setOrganizerId(1);
+        activity.setState(true);
+        activity.setPayment(20.1);
 //        String json="{\"id\":\"1\",\"uid\":\"1\",\"title\":\"标题\",\"content\":\"内容\",\"publishTime\":\"2018-01-01\",\"readNum\":\"1\"";
         mvc.perform(MockMvcRequestBuilders.post("/activity/updateActivity")
                 .accept(MediaType.APPLICATION_JSON_UTF8)
