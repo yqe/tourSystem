@@ -107,7 +107,7 @@ public class UserController {
      * @author yqe
      */
     @ApiOperation("登录验证")
-    @RequestMapping(value = "/login/{email},{password}", method = RequestMethod.POST)
+    @RequestMapping(value = "/login/{email},{password}", method = RequestMethod.GET)
     public ResponseEntity<JsonResponse> login(@PathVariable("email") String email, @PathVariable("password") String password) {
         JsonResponse r = new JsonResponse();
         try {
@@ -127,7 +127,7 @@ public class UserController {
      * @author yqe
      */
     @ApiOperation("查找用户")
-    @RequestMapping(value = "/searchUser/{keyword}", method = RequestMethod.POST)
+    @RequestMapping(value = "/searchUser/{keyword}", method = RequestMethod.GET)
     public ResponseEntity<JsonResponse> login(@PathVariable("keyword") String keyword) {
         JsonResponse r = new JsonResponse();
         try {
