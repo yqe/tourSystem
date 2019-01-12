@@ -8,6 +8,8 @@ public class Activity {
     private String deadline;
     private int organizerId;
     private int maxNum;
+    private boolean state;
+    private double payment;
 
     public Activity() {
     }
@@ -62,5 +64,21 @@ public class Activity {
 
     public void setMaxNum(int maxNum) {
         this.maxNum = maxNum;
+    }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
+    }
+
+    public double getPayment() {
+        return payment;
+    }
+
+    public void setPayment(double payment) {
+        this.payment = payment;
     }
 }

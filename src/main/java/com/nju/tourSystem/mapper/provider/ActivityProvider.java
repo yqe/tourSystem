@@ -19,6 +19,8 @@ public class ActivityProvider {
             VALUES("deadline","#{activity.deadline,javaType=String,jdbcType=VARCHAR}");
             VALUES("organizerId","#{activity.organizerId,javaType=int,jdbcType=INTEGER}");
             VALUES("maxNum","#{activity.maxNum,javaType=int,jdbcType=INTEGER}");
+            VALUES("state","#{activity.state,javaType=boolean,jdbcType=TINYINT}");
+            VALUES("payment","#{activity.payment,javaType=double,jdbcType=DOUBLE}");
         }
         return SQL();
 
@@ -35,6 +37,8 @@ public class ActivityProvider {
         SET("deadline = #{activity.deadline,javaType=String,jdbcType=VARCHAR}");
         SET("organizerId = #{activity.organizerId,javaType=int,jdbcType=INTEGER}");
         SET("maxNum = #{activity.maxNum,javaType=int,jdbcType=INTEGER}");
+        SET("state = #{activity.state,javaType=boolean,jdbcType=TINYINT}");
+        SET("payment = #{activity.payment,javaType=double,jdbcType=DOUBLE}");
         WHERE("id = #{activity.id,javaType=int,jdbcType=INTEGER}");
         return SQL();
     }
