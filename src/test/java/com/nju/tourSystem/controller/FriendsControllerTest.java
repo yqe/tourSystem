@@ -39,7 +39,7 @@ public class FriendsControllerTest {
      * 测试添加好友
      */
     @Test
-    public void addFreindsTest() throws Exception {
+    public void addFriendsTest() throws Exception {
         int uid = 1;
         int fid = 2;
         mvc.perform(MockMvcRequestBuilders.get("/friends/addFriends/"+uid+","+fid)
