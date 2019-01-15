@@ -157,7 +157,7 @@ public class ActivityControllerTest {
     @Test
     public void applicationAgreementTest() throws Exception {
         int id = 1;
-        mvc.perform(MockMvcRequestBuilders.get("/activity/joinActivity/"+id)
+        mvc.perform(MockMvcRequestBuilders.get("/activity/applicationAgreement/"+id)
                 .accept(MediaType.APPLICATION_JSON_UTF8)
         )
                 .andExpect(MockMvcResultMatchers.status().isOk())

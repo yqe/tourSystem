@@ -6,6 +6,8 @@ public class Participant {
     private int aid;
     private boolean agree;
     private double score;
+    private String applyTime;
+    private String agreeTime;
 
     public Participant() {
     }
@@ -44,5 +46,21 @@ public class Participant {
 
     public void setScore(double score) {
         this.score = score;
+    }
+
+    public String getApplyTime() {
+        return applyTime;
+    }
+
+    public void setApplyTime(String applyTime) {
+        this.applyTime = applyTime;
+    }
+
+    public String getAgreeTime() {
+        return agreeTime;
+    }
+
+    public void setAgreeTime(String agreeTime) {
+        this.agreeTime = agreeTime;
     }
 }

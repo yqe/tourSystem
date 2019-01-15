@@ -17,6 +17,8 @@ public class ParticipantProvider {
             VALUES("aid","#{participant.aid,javaType=int,jdbcType=INTEGER}");
             VALUES("agree","#{participant.agree,javaType=boolean,jdbcType=TINYINT}");
             VALUES("score","#{participant.score,javaType=double,jdbcType=DOUBLE}");
+            VALUES("applyTime","#{participant.applyTime,javaType=string,jdbcType=VARCHAR}");
+            VALUES("agreeTime","#{participant.agreeTime,javaType=string,jdbcType=VARCHAR}");
         }
         return SQL();
 
@@ -31,6 +33,8 @@ public class ParticipantProvider {
         SET("aid = #{participant.aid,javaType=int,jdbcType=INTEGER}");
         SET("agree = #{participant.agree,javaType=boolean,jdbcType=TINYINT}");
         SET("score = #{participant.score,javaType=double,jdbcType=DOUBLE}");
+        SET("applyTime = #{participant.applyTime,javaType=string,jdbcType=VARCHAR}");
+        SET("agreeTime = #{participant.agreeTime,javaType=string,jdbcType=VARCHAR}");
         WHERE("id = #{participant.id,javaType=int,jdbcType=INTEGER}");
         return SQL();
     }

@@ -13,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Api("活动信息管理")
@@ -139,6 +141,10 @@ public class ActivityController {
             participant.setUid(uid);
             participant.setAid(aid);
             participant.setAgree(false);
+            Date d = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            participant.setScore(0);
+            participant.setApplyTime(sdf.format(d));
             Boolean state = participantService.addParticipant(participant);
             r.setData(state);
             r.setStatus("ok");
@@ -184,7 +190,10 @@ public class ActivityController {
         JsonResponse r = new JsonResponse();
         try {
             Participant participant = participantService.getParticipantById(id);
+            Date d = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             participant.setAgree(true);
+            participant.setAgreeTime(sdf.format(d));
             Boolean state = participantService.updateParticipant(participant);
             r.setData(state);
             r.setStatus("ok");
