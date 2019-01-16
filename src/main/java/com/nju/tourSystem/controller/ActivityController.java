@@ -275,11 +275,11 @@ public class ActivityController {
      * @author yqe
      */
     @ApiOperation("获取报名中的活动")
-    @RequestMapping(value = "/getnewActivity/{startdate},{enddate}", method = RequestMethod.GET)
-    public ResponseEntity<JsonResponse> getnewActivity(@PathVariable("startdate")String startdate, @PathVariable("enddate")String enddate) {
+    @RequestMapping(value = "/getNewActivity/{date}", method = RequestMethod.GET)
+    public ResponseEntity<JsonResponse> getNewActivity(@PathVariable("date")String date) {
         JsonResponse r = new JsonResponse();
         try {
-            List<Activity> activityList = activityService.getnewActivity(startdate, enddate);
+            List<Activity> activityList = activityService.getNewActivity(date);
             r.setData(activityList);
             r.setStatus("ok");
         } catch (Exception e) {

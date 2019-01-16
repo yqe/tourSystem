@@ -23,10 +23,6 @@ public class ActivityServiceImpl implements ActivityService {
         return activityMapper.getAllActivity();
     }
 
-    @Override
-    public List<Activity> getOngoingActivity(String date) {
-        return activityMapper.getOngoingActivity(date);
-    }
 
     @Override
     public List<Activity> searchActivity(String keyword) {
@@ -39,8 +35,8 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public List<Activity> getnewActivity(String startdate, String enddate) {
-        return activityMapper.getnewActivity(startdate, enddate);
+    public List<Activity> getNewActivity(String date) {
+        return activityMapper.getNewActivity(date);
     }
 
     @Override
