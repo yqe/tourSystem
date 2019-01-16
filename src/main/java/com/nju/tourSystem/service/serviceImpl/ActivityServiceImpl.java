@@ -34,6 +34,16 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
+    public List<Activity> getActivityByOrganizerId(int organizerId) {
+        return activityMapper.getActivityByOrganizerId(organizerId);
+    }
+
+    @Override
+    public List<Activity> getnewActivity(String startdate, String enddate) {
+        return activityMapper.getnewActivity(startdate, enddate);
+    }
+
+    @Override
     public Boolean addAcitvity(Activity activity) {
         return activityMapper.insert(activity);
     }

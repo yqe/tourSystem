@@ -17,6 +17,8 @@ public class ActivityProvider {
             VALUES("description","#{activity.description,javaType=String,jdbcType=VARCHAR}");
             VALUES("createdTime","#{activity.createdTime,javaType=String,jdbcType=VARCHAR}");
             VALUES("deadline","#{activity.deadline,javaType=String,jdbcType=VARCHAR}");
+            VALUES("startTime","#{activity.startTime,javaType=String,jdbcType=VARCHAR}");
+            VALUES("endTime","#{activity.endTime,javaType=String,jdbcType=VARCHAR}");
             VALUES("organizerId","#{activity.organizerId,javaType=int,jdbcType=INTEGER}");
             VALUES("maxNum","#{activity.maxNum,javaType=int,jdbcType=INTEGER}");
             VALUES("state","#{activity.state,javaType=boolean,jdbcType=TINYINT}");
@@ -35,6 +37,8 @@ public class ActivityProvider {
         SET("description = #{activity.description,javaType=String,jdbcType=VARCHAR}");
         SET("createdTime = #{activity.createdTime,javaType=String,jdbcType=VARCHAR}");
         SET("deadline = #{activity.deadline,javaType=String,jdbcType=VARCHAR}");
+        SET("startTime = #{activity.startTime,javaType=String,jdbcType=VARCHAR}");
+        SET("endTime = #{activity.endTime,javaType=String,jdbcType=VARCHAR}");
         SET("organizerId = #{activity.organizerId,javaType=int,jdbcType=INTEGER}");
         SET("maxNum = #{activity.maxNum,javaType=int,jdbcType=INTEGER}");
         SET("state = #{activity.state,javaType=boolean,jdbcType=TINYINT}");

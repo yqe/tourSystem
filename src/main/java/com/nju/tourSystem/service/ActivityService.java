@@ -9,6 +9,8 @@ public interface ActivityService {
     List<Activity> getAllActivity();
     List<Activity> getOngoingActivity(String date);
     List<Activity> searchActivity(String keyword);
+    List<Activity> getActivityByOrganizerId(int organizerId);
+    List<Activity> getnewActivity(String startdate, String enddate);
     Boolean addAcitvity(Activity activity);
     Boolean updateAcitvity(Activity activity);
 }

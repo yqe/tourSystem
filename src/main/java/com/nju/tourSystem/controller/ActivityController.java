@@ -250,4 +250,44 @@ public class ActivityController {
         return ResponseEntity.ok(r);
     }
 
+    /**
+     *
+     * @author yqe
+     */
+    @ApiOperation("获取用户发起的活动")
+    @RequestMapping(value = "/myOrganizedActivityList/{organizerId}", method = RequestMethod.GET)
+    public ResponseEntity<JsonResponse> myOrganizedActivityList(@PathVariable("organizerId") int organizerId) {
+        JsonResponse r = new JsonResponse();
+        try {
+            List<Activity> activityList = activityService.getActivityByOrganizerId(organizerId);
+            r.setData(activityList);
+            r.setStatus("ok");
+        } catch (Exception e) {
+            r.setData(e.getClass().getName() + ":" + e.getMessage());
+            r.setStatus("error");
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok(r);
+    }
+
+    /**
+     *
+     * @author yqe
+     */
+    @ApiOperation("获取报名中的活动")
+    @RequestMapping(value = "/getnewActivity/{startdate},{enddate}", method = RequestMethod.GET)
+    public ResponseEntity<JsonResponse> getnewActivity(@PathVariable("startdate")String startdate, @PathVariable("enddate")String enddate) {
+        JsonResponse r = new JsonResponse();
+        try {
+            List<Activity> activityList = activityService.getnewActivity(startdate, enddate);
+            r.setData(activityList);
+            r.setStatus("ok");
+        } catch (Exception e) {
+            r.setData(e.getClass().getName() + ":" + e.getMessage());
+            r.setStatus("error");
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok(r);
+    }
+
 }

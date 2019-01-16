@@ -6,6 +6,8 @@ public class Activity {
     private String description;
     private String createdTime;
     private String deadline;
+    private String startTime;
+    private String endTime;
     private int organizerId;
     private int maxNum;
     private boolean state;
@@ -80,5 +82,21 @@ public class Activity {
 
     public void setPayment(double payment) {
         this.payment = payment;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 }
