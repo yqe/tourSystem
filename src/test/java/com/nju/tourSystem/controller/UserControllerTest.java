@@ -89,20 +89,20 @@ public class UserControllerTest {
                 .andDo(MockMvcResultHandlers.print());
     }
 
-    /**
-     * 测试更新用户
-     */
-    @Test
-    public void updateUserTest() throws Exception {
-        String json="{\"id\":\"1\",\"username\":\"李四\",\"password\":\"panghu\",\"email\":\"1234567@qq.com\",\"balance\":\"60\"}";
-        mvc.perform(MockMvcRequestBuilders.post("/user/updateUser")
-                .accept(MediaType.APPLICATION_JSON_UTF8)
-                .content(json.getBytes())
-                .contentType("application/json; charset=UTF-8")
-        )
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andDo(MockMvcResultHandlers.print());
-    }
+//    /**
+//     * 测试更新用户
+//     */
+//    @Test
+//    public void updateUserTest() throws Exception {
+//        String json="{\"id\":\"1\",\"username\":\"李四\",\"password\":\"panghu\",\"email\":\"1234567@qq.com\",\"balance\":\"60\"}";
+//        mvc.perform(MockMvcRequestBuilders.post("/user/updateUser")
+//                .accept(MediaType.APPLICATION_JSON_UTF8)
+//                .content(json.getBytes())
+//                .contentType("application/json; charset=UTF-8")
+//        )
+//                .andExpect(MockMvcResultMatchers.status().isOk())
+//                .andDo(MockMvcResultHandlers.print());
+//    }
 
     /**
      * 测试登录验证
