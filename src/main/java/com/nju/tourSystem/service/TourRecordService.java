@@ -8,5 +8,5 @@ public interface TourRecordService {
     boolean addTourRecord(TourRecord tourRecord);
     boolean updateTourRecord(TourRecord tourRecord);
     TourRecord getTourRecordById(int id);
-    List<TourRecord> getTourRecordByUid(int uid);
+    List<TourRecord> getTourRecordByUid(String uid);
 }

@@ -134,7 +134,7 @@ public class ActivityController {
      */
     @ApiOperation("参加出游")
     @RequestMapping(value = "/joinActivity/{uid},{aid}", method = RequestMethod.GET)
-    public ResponseEntity<JsonResponse> joinActivity(@PathVariable("uid") int uid,@PathVariable("aid") int aid) {
+    public ResponseEntity<JsonResponse> joinActivity(@PathVariable("uid") String uid,@PathVariable("aid") int aid) {
         JsonResponse r = new JsonResponse();
         try {
             Participant participant = new Participant();
@@ -211,7 +211,7 @@ public class ActivityController {
      */
     @ApiOperation("获取参加的出游列表")
     @RequestMapping(value = "/myActivityList/{uid}", method = RequestMethod.GET)
-    public ResponseEntity<JsonResponse> myActivityList(@PathVariable("uid") int uid) {
+    public ResponseEntity<JsonResponse> myActivityList(@PathVariable("uid") String uid) {
         JsonResponse r = new JsonResponse();
         try {
             List<Participant> participantList = participantService.getActivityListByUid(uid);
@@ -236,7 +236,7 @@ public class ActivityController {
      */
     @ApiOperation("获取申请阶段的出游列表")
     @RequestMapping(value = "/myapplicationList/{uid}", method = RequestMethod.GET)
-    public ResponseEntity<JsonResponse> myapplicationList(@PathVariable("uid") int uid) {
+    public ResponseEntity<JsonResponse> myapplicationList(@PathVariable("uid") String uid) {
         JsonResponse r = new JsonResponse();
         try {
             List<Participant> participantList = participantService.getApplicationListByUid(uid);
@@ -256,7 +256,7 @@ public class ActivityController {
      */
     @ApiOperation("获取用户发起的活动")
     @RequestMapping(value = "/myOrganizedActivityList/{organizerId}", method = RequestMethod.GET)
-    public ResponseEntity<JsonResponse> myOrganizedActivityList(@PathVariable("organizerId") int organizerId) {
+    public ResponseEntity<JsonResponse> myOrganizedActivityList(@PathVariable("organizerId") String organizerId) {
         JsonResponse r = new JsonResponse();
         try {
             List<Activity> activityList = activityService.getActivityByOrganizerId(organizerId);
