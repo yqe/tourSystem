@@ -30,12 +30,12 @@ public class ParticipantServiceImpl implements ParticipantService {
     }
 
     @Override
-    public List<Participant> getActivityListByUid(int uid) {
+    public List<Participant> getActivityListByUid(String uid) {
         return participantMapper.getActivityListByUid(uid);
     }
 
     @Override
-    public List<Participant> getApplicationListByUid(int uid) {
+    public List<Participant> getApplicationListByUid(String uid) {
         return participantMapper.getApplicationListByUid(uid);
     }
 

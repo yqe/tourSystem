@@ -30,7 +30,7 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public List<Activity> getActivityByOrganizerId(int organizerId) {
+    public List<Activity> getActivityByOrganizerId(String organizerId) {
         return activityMapper.getActivityByOrganizerId(organizerId);
     }
 

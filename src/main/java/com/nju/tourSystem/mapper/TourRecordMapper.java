@@ -16,7 +16,7 @@ public interface TourRecordMapper {
     TourRecord getTourRecordById(int id);
 
     @Select("SELECT * FROM tourRecord WHERE uid = #{uid}")
-    List<TourRecord> getTourRecordByUid(int uid);
+    List<TourRecord> getTourRecordByUid(String uid);
 
     @InsertProvider(type = TourRecordProvider.class,method = "insert")
     Boolean insert(@Param("tourRecord")TourRecord tourRecord);

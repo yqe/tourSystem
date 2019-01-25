@@ -15,10 +15,10 @@ public interface ParticipantMapper {
     Participant getParticipantById(int id);
 
     @Select("SELECT * FROM participant WHERE uid = #{uid} and agree = 1")
-    List<Participant> getActivityListByUid(int uid);
+    List<Participant> getActivityListByUid(String uid);
 
     @Select("SELECT * FROM participant WHERE uid = #{uid} and agree = 0")
-    List<Participant> getApplicationListByUid(int uid);
+    List<Participant> getApplicationListByUid(String uid);
 
     @Select("SELECT * FROM participant WHERE aid = #{aid} and agree = 1")
     List<Participant> getParticipantList(int aid);

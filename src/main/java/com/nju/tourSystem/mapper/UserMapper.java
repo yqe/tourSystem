@@ -12,7 +12,7 @@ import java.util.List;
 public interface UserMapper {
 
     @Select("SELECT * FROM user WHERE id = #{id}")
-    User getUserById(int id);
+    User getUserById(String id);
 
     @Select("SELECT * FROM user WHERE email = #{email}")
     User getUserByEmail(String email);

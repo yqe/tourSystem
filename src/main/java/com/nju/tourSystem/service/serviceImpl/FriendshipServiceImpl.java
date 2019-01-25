@@ -28,12 +28,12 @@ public class FriendshipServiceImpl implements FriendshipService {
     }
 
     @Override
-    public List<Friendship> getFriendshipListByUid(int uid) {
+    public List<Friendship> getFriendshipListByUid(String uid) {
         return friendshipMapper.getFriendshipListByUid(uid);
     }
 
     @Override
-    public List<Friendship> getApplicationListByUid(int uid) {
+    public List<Friendship> getApplicationListByUid(String uid) {
         return friendshipMapper.getApplicationListByUid(uid);
     }
 

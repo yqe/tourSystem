@@ -8,7 +8,7 @@ public interface ActivityService {
     Activity getActivityById(int id);
     List<Activity> getAllActivity();
     List<Activity> searchActivity(String keyword);
-    List<Activity> getActivityByOrganizerId(int organizerId);
+    List<Activity> getActivityByOrganizerId(String organizerId);
     List<Activity> getNewActivity(String date);
     Boolean addAcitvity(Activity activity);
     Boolean updateAcitvity(Activity activity);
