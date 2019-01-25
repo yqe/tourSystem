@@ -15,10 +15,10 @@ public interface FriendshipMapper {
     Friendship getFriendshipById(int id);
 
     @Select("SELECT * FROM friendship WHERE uid = #{uid} and agree = 1")
-    List<Friendship> getFriendshipListByUid(int uid);
+    List<Friendship> getFriendshipListByUid(String uid);
 
     @Select("SELECT * FROM friendship WHERE uid = #{uid} and agree = 0")
-    List<Friendship> getApplicationListByUid(int uid);
+    List<Friendship> getApplicationListByUid(String uid);
 
     @Delete("DELETE FROM friendship WHERE id = #{id}")
     Boolean delete(int id);

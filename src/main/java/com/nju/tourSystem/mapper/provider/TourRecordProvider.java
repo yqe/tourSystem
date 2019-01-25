@@ -13,7 +13,7 @@ public class TourRecordProvider {
         if(tourRecord!=null){
             BEGIN();
             INSERT_INTO(TABLE_NAME);
-            VALUES("uid","#{tourRecord.uid,javaType=int,jdbcType=INTEGER}");
+            VALUES("uid","#{tourRecord.uid,javaType=String,jdbcType=VARCHAR}");
             VALUES("title","#{tourRecord.title,javaType=String,jdbcType=VARCHAR}");
             VALUES("content","#{tourRecord.content,javaType=String,jdbcType=VARCHAR}");
             VALUES("publishTime","#{tourRecord.publishTime,javaType=String,jdbcType=VARCHAR}");
@@ -28,7 +28,7 @@ public class TourRecordProvider {
         TourRecord tourRecord = (TourRecord) para.get("tourRecord");
         BEGIN();
         UPDATE(TABLE_NAME);
-        SET("uid = #{tourRecord.uid,javaType=int,jdbcType=INTEGER}");
+        SET("uid = #{tourRecord.uid,javaType=String,jdbcType=VARCHAR}");
         SET("title = #{tourRecord.title,javaType=String,jdbcType=VARCHAR}");
         SET("content = #{tourRecord.content,javaType=String,jdbcType=VARCHAR}");
         SET("publishTime = #{tourRecord.publishTime,javaType=String,jdbcType=VARCHAR}");

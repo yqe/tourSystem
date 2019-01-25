@@ -13,7 +13,7 @@ public class ParticipantProvider {
         if(participant!=null){
             BEGIN();
             INSERT_INTO(TABLE_NAME);
-            VALUES("uid","#{participant.uid,javaType=int,jdbcType=INTEGER}");
+            VALUES("uid","#{participant.uid,javaType=String,jdbcType=VARCHAR}");
             VALUES("aid","#{participant.aid,javaType=int,jdbcType=INTEGER}");
             VALUES("agree","#{participant.agree,javaType=boolean,jdbcType=TINYINT}");
             VALUES("score","#{participant.score,javaType=double,jdbcType=DOUBLE}");
@@ -29,7 +29,7 @@ public class ParticipantProvider {
         Participant participant = (Participant) para.get("participant");
         BEGIN();
         UPDATE(TABLE_NAME);
-        SET("uid = #{participant.uid,javaType=int,jdbcType=INTEGER}");
+        SET("uid = #{participant.uid,javaType=String,jdbcType=VARCHAR}");
         SET("aid = #{participant.aid,javaType=int,jdbcType=INTEGER}");
         SET("agree = #{participant.agree,javaType=boolean,jdbcType=TINYINT}");
         SET("score = #{participant.score,javaType=double,jdbcType=DOUBLE}");

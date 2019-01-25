@@ -13,8 +13,8 @@ public class FriendshipProvider {
         if(friendship!=null){
             BEGIN();
             INSERT_INTO(TABLE_NAME);
-            VALUES("uid","#{friendship.uid,javaType=int,jdbcType=INTEGER}");
-            VALUES("fid","#{friendship.fid,javaType=int,jdbcType=INTEGER}");
+            VALUES("uid","#{friendship.uid,javaType=String,jdbcType=VARCHAR}");
+            VALUES("fid","#{friendship.fid,javaType=String,jdbcType=VARCHAR}");
             VALUES("agree","#{friendship.agree,javaType=boolean,jdbcType=TINYINT}");
         }
         return SQL();
@@ -26,8 +26,8 @@ public class FriendshipProvider {
         Friendship friendship = (Friendship) para.get("friendship");
         BEGIN();
         UPDATE(TABLE_NAME);
-        SET("uid = #{friendship.uid,javaType=int,jdbcType=INTEGER}");
-        SET("fid = #{friendship.fid,javaType=int,jdbcType=INTEGER}");
+        SET("uid = #{friendship.uid,javaType=String,jdbcType=VARCHAR}");
+        SET("fid = #{friendship.fid,javaType=String,jdbcType=VARCHAR}");
         SET("agree = #{friendship.agree,javaType=boolean,jdbcType=TINYINT}");
         WHERE("id = #{friendship.id,javaType=int,jdbcType=INTEGER}");
         return SQL();

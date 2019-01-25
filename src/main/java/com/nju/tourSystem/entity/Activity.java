@@ -3,12 +3,13 @@ package com.nju.tourSystem.entity;
 public class Activity {
     private int id;
     private String name;
+    private String address;
     private String description;
     private String createdTime;
     private String deadline;
     private String startTime;
     private String endTime;
-    private int organizerId;
+    private String organizerId;
     private int maxNum;
     private boolean state;
     private double payment;
@@ -26,6 +27,14 @@ public class Activity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getDescription() {
@@ -52,11 +61,11 @@ public class Activity {
         this.deadline = deadline;
     }
 
-    public int getOrganizerId() {
+    public String getOrganizerId() {
         return organizerId;
     }
 
-    public void setOrganizerId(int organizerId) {
+    public void setOrganizerId(String organizerId) {
         this.organizerId = organizerId;
     }
 

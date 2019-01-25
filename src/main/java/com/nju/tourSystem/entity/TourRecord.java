@@ -2,7 +2,7 @@ package com.nju.tourSystem.entity;
 
 public class TourRecord {
     private int id;
-    private int uid;
+    private String uid;
     private String  title;
     private String  content;
     private String  publishTime;
@@ -15,11 +15,11 @@ public class TourRecord {
         return id;
     }
 
-    public int getUid() {
+    public String getUid() {
         return uid;
     }
 
-    public void setUid(int uid) {
+    public void setUid(String uid) {
         this.uid = uid;
     }
 

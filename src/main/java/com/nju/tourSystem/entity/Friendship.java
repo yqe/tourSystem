@@ -2,8 +2,8 @@ package com.nju.tourSystem.entity;
 
 public class Friendship {
     private int id;
-    private int uid;
-    private int fid;
+    private String uid;
+    private String fid;
     private boolean agree;
 
     public Friendship() {
@@ -13,19 +13,19 @@ public class Friendship {
         return id;
     }
 
-    public int getUid() {
+    public String getUid() {
         return uid;
     }
 
-    public void setUid(int uid) {
+    public void setUid(String uid) {
         this.uid = uid;
     }
 
-    public int getFid() {
+    public String getFid() {
         return fid;
     }
 
-    public void setFid(int fid) {
+    public void setFid(String fid) {
         this.fid = fid;
     }
 

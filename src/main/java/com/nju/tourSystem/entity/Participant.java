@@ -2,7 +2,7 @@ package com.nju.tourSystem.entity;
 
 public class Participant {
     private int id;
-    private int uid;
+    private String uid;
     private int aid;
     private boolean agree;
     private double score;
@@ -16,11 +16,11 @@ public class Participant {
         return id;
     }
 
-    public int getUid() {
+    public String getUid() {
         return uid;
     }
 
-    public void setUid(int uid) {
+    public void setUid(String uid) {
         this.uid = uid;
     }
 

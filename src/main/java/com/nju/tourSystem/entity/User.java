@@ -1,7 +1,7 @@
 package com.nju.tourSystem.entity;
 
 public class User {
-    private int id;
+    private String id;
     private int age;
     private String username;
     private String email;
@@ -13,7 +13,11 @@ public class User {
     public User() {
     }
 
-    public int getId() {
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
         return id;
     }
 
