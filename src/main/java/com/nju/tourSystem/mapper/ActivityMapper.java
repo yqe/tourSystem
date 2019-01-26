@@ -20,11 +20,14 @@ public interface ActivityMapper {
     @Select("SELECT * FROM activity ")
     List<Activity> getAllActivity();
 
-    @Select("SELECT * FROM activity WHERE deadline > #{date} and #{date} > createdTime")
+    @Select("SELECT * FROM activity WHERE deadline > #{date} and #{date} >= createdTime")
     List<Activity> getNewActivity(String date);
 
-    @Select("SELECT * FROM activity WHERE deadline > #{date} and #{date} > createdTime")
-    List<Activity> getNewActivityByUid(String date,String uid);
+    @Select("SELECT * FROM activity WHERE endTime > #{date} and #{date} >= startTime")
+    List<Activity> getOngoingActivity(String date);
+
+    @Select("SELECT * FROM activity WHERE endTime <= #{date}")
+    List<Activity> getFinishedActivity(String date);
 
     @Select("SELECT * FROM activity WHERE name LIKE CONCAT('%',#{keyword},'%')")
     List<Activity> searchActivity(String keyword);

@@ -44,7 +44,7 @@ public class TourRecordController {
      */
     @ApiOperation("根据用户查询其游记")
     @RequestMapping(value = "/getArticleByUser/{uid}", method = RequestMethod.GET)
-    public ResponseEntity<JsonResponse> getArticleByUser(@PathVariable int uid) {
+    public ResponseEntity<JsonResponse> getArticleByUser(@PathVariable String uid) {
         JsonResponse r = new JsonResponse();
         try {
             List<TourRecord> tourRecordList = tourRecordService.getTourRecordByUid(uid);

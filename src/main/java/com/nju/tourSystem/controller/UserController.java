@@ -28,7 +28,7 @@ public class UserController {
      */
     @ApiOperation("根据ID获取用户信息")
     @RequestMapping(value = "userinfo/{id}", method = RequestMethod.GET)
-    public ResponseEntity<JsonResponse> getUser(@PathVariable int id) {
+    public ResponseEntity<JsonResponse> getUser(@PathVariable String id) {
         JsonResponse r = new JsonResponse();
         try {
             User user = userService.getUserById(id);

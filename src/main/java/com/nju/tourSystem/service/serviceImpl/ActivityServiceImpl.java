@@ -36,7 +36,18 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public List<Activity> getNewActivity(String date) {
+//        System.out.println(date);
         return activityMapper.getNewActivity(date);
+    }
+
+    @Override
+    public List<Activity> getOngoingActivity(String date) {
+        return activityMapper.getOngoingActivity(date);
+    }
+
+    @Override
+    public List<Activity> getFinishedActivity(String date) {
+        return activityMapper.getFinishedActivity(date);
     }
 
     @Override

@@ -10,6 +10,8 @@ public interface ActivityService {
     List<Activity> searchActivity(String keyword);
     List<Activity> getActivityByOrganizerId(String organizerId);
     List<Activity> getNewActivity(String date);
+    List<Activity> getOngoingActivity(String date);
+    List<Activity> getFinishedActivity(String date);
     Boolean addAcitvity(Activity activity);
     Boolean updateAcitvity(Activity activity);
 }

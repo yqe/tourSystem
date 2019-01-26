@@ -33,7 +33,7 @@ public class FriendsController {
      */
     @ApiOperation("添加好友")
     @RequestMapping(value = "/addFriends/{uid},{fid}", method = RequestMethod.GET)
-    public ResponseEntity<JsonResponse> addFriends(@PathVariable("uid") int uid,@PathVariable("fid") int fid) {
+    public ResponseEntity<JsonResponse> addFriends(@PathVariable("uid") String uid,@PathVariable("fid") String fid) {
         JsonResponse r = new JsonResponse();
         try {
             Friendship friendship = new Friendship();
@@ -79,7 +79,7 @@ public class FriendsController {
      */
     @ApiOperation("获取好友列表")
     @RequestMapping(value = "/friendsList/{uid}", method = RequestMethod.GET)
-    public ResponseEntity<JsonResponse> friendsList(@PathVariable("uid") int uid) {
+    public ResponseEntity<JsonResponse> friendsList(@PathVariable("uid") String uid) {
         JsonResponse r = new JsonResponse();
         try {
             List<Friendship> friendshipList = friendshipService.getFriendshipListByUid(uid);
@@ -103,7 +103,7 @@ public class FriendsController {
      */
     @ApiOperation("获取好友申请列表")
     @RequestMapping(value = "/applicationList/{uid}", method = RequestMethod.GET)
-    public ResponseEntity<JsonResponse> applicationList(@PathVariable("uid") int uid) {
+    public ResponseEntity<JsonResponse> applicationList(@PathVariable("uid") String uid) {
         JsonResponse r = new JsonResponse();
         try {
             List<Friendship> friendshipList = friendshipService.getApplicationListByUid(uid);

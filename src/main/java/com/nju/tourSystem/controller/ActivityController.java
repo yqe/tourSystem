@@ -209,17 +209,84 @@ public class ActivityController {
      *
      * @author yqe
      */
-    @ApiOperation("获取参加的出游列表")
-    @RequestMapping(value = "/myActivityList/{uid}", method = RequestMethod.GET)
-    public ResponseEntity<JsonResponse> myActivityList(@PathVariable("uid") String uid) {
+    public List<Activity> getActivityList( List<Participant> participantList,List<Activity> stateActivityList) {
+        List<Activity> activityList = new ArrayList<>();
+        List<Integer> idList = new ArrayList<>();
+        for (Activity activity : stateActivityList){
+            idList.add(activity.getId());
+        }
+        if(participantList.size() > 0){
+            for(Participant participant:participantList){
+                Activity activity = activityService.getActivityById(participant.getAid());
+                if(idList.contains(activity.getId()))
+                    activityList.add(activity);
+            }
+        }
+        return activityList;
+    }
+
+    /**
+     *
+     * @author yqe
+     */
+    @ApiOperation("获取参加的未开始的出游列表")
+    @RequestMapping(value = "/myNewActivityList/{uid}", method = RequestMethod.GET)
+    public ResponseEntity<JsonResponse> myNewActivityList(@PathVariable("uid") String uid) {
         JsonResponse r = new JsonResponse();
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
             List<Participant> participantList = participantService.getActivityListByUid(uid);
-            List<Activity> activityList = new ArrayList<>();
-            if(participantList.size() > 0){
-                for(Participant participant:participantList)
-                    activityList.add(activityService.getActivityById(participant.getAid()));
-            }
+            List<Activity> newActivityList = activityService.getNewActivity(sdf.format(d));
+            List<Activity> activityList = getActivityList(participantList, newActivityList);
+            r.setData(activityList);
+            r.setStatus("ok");
+        } catch (Exception e) {
+            r.setData(e.getClass().getName() + ":" + e.getMessage());
+            r.setStatus("error");
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok(r);
+    }
+
+    /**
+     *
+     * @author yqe
+     */
+    @ApiOperation("获取参加的进行中的出游列表")
+    @RequestMapping(value = "/myOngoingActivityList/{uid}", method = RequestMethod.GET)
+    public ResponseEntity<JsonResponse> myOngoingActivityList(@PathVariable("uid") String uid) {
+        JsonResponse r = new JsonResponse();
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            List<Participant> participantList = participantService.getActivityListByUid(uid);
+            List<Activity> ongoingActivityList = activityService.getOngoingActivity(sdf.format(d));
+            List<Activity> activityList = getActivityList(participantList, ongoingActivityList);
+            r.setData(activityList);
+            r.setStatus("ok");
+        } catch (Exception e) {
+            r.setData(e.getClass().getName() + ":" + e.getMessage());
+            r.setStatus("error");
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok(r);
+    }
+
+    /**
+     *
+     * @author yqe
+     */
+    @ApiOperation("获取参加的进行中的出游列表")
+    @RequestMapping(value = "/myFinishedActivityList/{uid}", method = RequestMethod.GET)
+    public ResponseEntity<JsonResponse> myFinishedActivityList(@PathVariable("uid") String uid) {
+        JsonResponse r = new JsonResponse();
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            List<Participant> participantList = participantService.getActivityListByUid(uid);
+            List<Activity> finishedActivityList = activityService.getFinishedActivity(sdf.format(d));
+            List<Activity> activityList = getActivityList(participantList, finishedActivityList);
             r.setData(activityList);
             r.setStatus("ok");
         } catch (Exception e) {
