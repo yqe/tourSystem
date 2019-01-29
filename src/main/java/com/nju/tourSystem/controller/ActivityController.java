@@ -167,8 +167,8 @@ public class ActivityController {
         try {
             List<Activity> activities = new ArrayList<>();
             List<Integer> aid_list= participantService.searchHotActivity();
-            for(int i=0;i<aid_list.size();i++){
-                activities.add(activityService.getActivityById(aid_list.get(i)));
+            for (Integer anAid_list : aid_list) {
+                activities.add(activityService.getActivityById(anAid_list));
             }
             r.setData(activities);
             r.setStatus("ok");
@@ -209,7 +209,7 @@ public class ActivityController {
      *
      * @author yqe
      */
-    public List<Activity> getActivityList( List<Participant> participantList,List<Activity> stateActivityList) {
+    private List<Activity> getActivityList(List<Participant> participantList, List<Activity> stateActivityList) {
         List<Activity> activityList = new ArrayList<>();
         List<Integer> idList = new ArrayList<>();
         for (Activity activity : stateActivityList){
