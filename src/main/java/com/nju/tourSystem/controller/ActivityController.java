@@ -3,8 +3,10 @@ package com.nju.tourSystem.controller;
 import com.nju.tourSystem.entity.Activity;
 import com.nju.tourSystem.entity.JsonResponse;
 import com.nju.tourSystem.entity.Participant;
+import com.nju.tourSystem.entity.User;
 import com.nju.tourSystem.service.ActivityService;
 import com.nju.tourSystem.service.ParticipantService;
+import com.nju.tourSystem.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -26,6 +28,8 @@ public class ActivityController {
     ActivityService activityService;
     @Autowired
     ParticipantService participantService;
+    @Autowired
+    UserService userService;
     private static final Logger logger= LoggerFactory.getLogger(UserController.class);
 
     /**
@@ -348,6 +352,29 @@ public class ActivityController {
         try {
             List<Activity> activityList = activityService.getNewActivity(date);
             r.setData(activityList);
+            r.setStatus("ok");
+        } catch (Exception e) {
+            r.setData(e.getClass().getName() + ":" + e.getMessage());
+            r.setStatus("error");
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok(r);
+    }
+
+    /**
+     *
+     * @author yqe
+     */
+    @ApiOperation("根据活动ID获取参与者列表")
+    @RequestMapping(value = "/getMemberList/{aid}", method = RequestMethod.GET)
+    public ResponseEntity<JsonResponse> getMemberList(@PathVariable("aid")int aid) {
+        JsonResponse r = new JsonResponse();
+        try {
+            List <Participant> participantList = participantService.getParticipantList(aid);
+            List <User> userList = new ArrayList<>();
+            for (Participant aParticipantList : participantList)
+                userList.add(userService.getUserById(aParticipantList.getUid()));
+            r.setData(userList);
             r.setStatus("ok");
         } catch (Exception e) {
             r.setData(e.getClass().getName() + ":" + e.getMessage());
