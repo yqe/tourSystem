@@ -4,7 +4,7 @@ public class Participant {
     private int id;
     private String uid;
     private int aid;
-    private boolean agree;
+    private int agree;
     private double score;
     private String applyTime;
     private String agreeTime;
@@ -32,11 +32,11 @@ public class Participant {
         this.aid = aid;
     }
 
-    public boolean isAgree() {
+    public int isAgree() {
         return agree;
     }
 
-    public void setAgree(boolean agree) {
+    public void setAgree(int agree) {
         this.agree = agree;
     }
 

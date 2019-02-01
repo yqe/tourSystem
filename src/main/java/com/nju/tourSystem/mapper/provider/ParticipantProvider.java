@@ -15,7 +15,7 @@ public class ParticipantProvider {
             INSERT_INTO(TABLE_NAME);
             VALUES("uid","#{participant.uid,javaType=String,jdbcType=VARCHAR}");
             VALUES("aid","#{participant.aid,javaType=int,jdbcType=INTEGER}");
-            VALUES("agree","#{participant.agree,javaType=boolean,jdbcType=TINYINT}");
+            VALUES("agree","#{participant.agree,javaType=int,jdbcType=INTEGER}");
             VALUES("score","#{participant.score,javaType=double,jdbcType=DOUBLE}");
             VALUES("applyTime","#{participant.applyTime,javaType=string,jdbcType=VARCHAR}");
             VALUES("agreeTime","#{participant.agreeTime,javaType=string,jdbcType=VARCHAR}");
@@ -31,7 +31,7 @@ public class ParticipantProvider {
         UPDATE(TABLE_NAME);
         SET("uid = #{participant.uid,javaType=String,jdbcType=VARCHAR}");
         SET("aid = #{participant.aid,javaType=int,jdbcType=INTEGER}");
-        SET("agree = #{participant.agree,javaType=boolean,jdbcType=TINYINT}");
+        SET("agree = #{participant.agree,javaType=int,jdbcType=INTEGER}");
         SET("score = #{participant.score,javaType=double,jdbcType=DOUBLE}");
         SET("applyTime = #{participant.applyTime,javaType=string,jdbcType=VARCHAR}");
         SET("agreeTime = #{participant.agreeTime,javaType=string,jdbcType=VARCHAR}");

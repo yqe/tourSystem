@@ -144,7 +144,7 @@ public class ActivityController {
             Participant participant = new Participant();
             participant.setUid(uid);
             participant.setAid(aid);
-            participant.setAgree(false);
+            participant.setAgree(0);
             Date d = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             participant.setScore(0);
@@ -188,15 +188,16 @@ public class ActivityController {
      *
      * @author yqe
      */
-    @ApiOperation("同意出游申请")
-    @RequestMapping(value = "/applicationAgreement/{id}", method = RequestMethod.GET)
-    public ResponseEntity<JsonResponse> applicationAgreement(@PathVariable("id") int id) {
+    @ApiOperation("出游申请操作")
+    @RequestMapping(value = "/applicationAgreement/{id},{agree}", method = RequestMethod.GET)
+    public ResponseEntity<JsonResponse> applicationAgreement(@PathVariable("id") int id,@PathVariable("agree") int agree) {
+        //agree 1为通过，2为拒绝
         JsonResponse r = new JsonResponse();
         try {
             Participant participant = participantService.getParticipantById(id);
             Date d = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            participant.setAgree(true);
+            participant.setAgree(agree);
             participant.setAgreeTime(sdf.format(d));
             Boolean state = participantService.updateParticipant(participant);
             r.setData(state);
@@ -301,6 +302,8 @@ public class ActivityController {
         return ResponseEntity.ok(r);
     }
 
+
+
     /**
      *
      * @author yqe
@@ -311,7 +314,31 @@ public class ActivityController {
         JsonResponse r = new JsonResponse();
         try {
             List<Participant> participantList = participantService.getApplicationListByUid(uid);
-            r.setData(participantList);
+            List<Activity> allList = activityService.getAllActivity();
+            List<Activity> activityList = getActivityList(participantList, allList);
+            r.setData(activityList);
+            r.setStatus("ok");
+        } catch (Exception e) {
+            r.setData(e.getClass().getName() + ":" + e.getMessage());
+            r.setStatus("error");
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok(r);
+    }
+
+    /**
+     *
+     * @author yqe
+     */
+    @ApiOperation("获取被拒绝的出游列表")
+    @RequestMapping(value = "/myRefusedList/{uid}", method = RequestMethod.GET)
+    public ResponseEntity<JsonResponse> myRefusedList(@PathVariable("uid") String uid) {
+        JsonResponse r = new JsonResponse();
+        try {
+            List<Participant> participantList = participantService.getRefusedListByUid(uid);
+            List<Activity> allList = activityService.getAllActivity();
+            List<Activity> activityList = getActivityList(participantList, allList);
+            r.setData(activityList);
             r.setStatus("ok");
         } catch (Exception e) {
             r.setData(e.getClass().getName() + ":" + e.getMessage());
