@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -80,7 +81,20 @@ public class ActivityController {
     @RequestMapping(value = "/addActivity", method = RequestMethod.POST)
     public ResponseEntity<JsonResponse> addActivity(@RequestBody Activity activity) {
         JsonResponse r = new JsonResponse();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        ParsePosition pos = new ParsePosition(0);
         try {
+            Date createdTime = formatter.parse(activity.getCreatedTime(), pos);
+            Date deadline = formatter.parse(activity.getDeadline(), pos);
+            Date startTime = formatter.parse(activity.getStartTime(), pos);
+            Date endTime = formatter.parse(activity.getEndTime(), pos);
+
+            activity.setCreatedTime(sdf.format(createdTime));
+            activity.setDeadline(sdf.format(deadline));
+            activity.setStartTime(sdf.format(startTime));
+            activity.setEndTime(sdf.format(endTime));
+
             Boolean state = activityService.addAcitvity(activity);
             r.setData(state);
             r.setStatus("ok");
