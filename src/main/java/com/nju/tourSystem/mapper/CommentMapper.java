@@ -13,7 +13,7 @@ public interface CommentMapper {
     @Select("SELECT * FROM comment WHERE id = #{id}")
     Comment getCommentById(int id);
 
-    @Select("SELECT * FROM comment WHERE receiverUid = #{receiverUid} ORDER BY commentTime DESC")
+    @Select("SELECT * FROM comment WHERE receiverUid = #{receiverUid} ORDER BY commentTime ")
     List<Comment> getCommentListByReceiverUid(String receiverUid);
 
     @InsertProvider(type = CommentProvider.class,method = "insert")
