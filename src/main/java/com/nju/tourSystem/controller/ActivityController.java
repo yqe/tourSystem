@@ -85,7 +85,7 @@ public class ActivityController {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         ParsePosition pos = new ParsePosition(0);
         try {
-            Date createdTime = formatter.parse(activity.getCreatedTime(), pos);
+            Date createdTime = new Date();
             Date deadline = formatter.parse(activity.getDeadline(), pos);
             Date startTime = formatter.parse(activity.getStartTime(), pos);
             Date endTime = formatter.parse(activity.getEndTime(), pos);
