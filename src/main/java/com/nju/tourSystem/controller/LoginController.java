@@ -112,4 +112,19 @@ public class LoginController {
         return ResponseEntity.ok(r);
 
     }
-}
+
+
+    @ResponseBody
+    @RequestMapping(value = "/addUserInfo", method = RequestMethod.POST)
+    public void addUserInfo(String uid, String nickname , String url) {
+        System.out.println("save");
+        User user = new User();
+        user.setId(uid);//用户Id
+        user.setUsername(nickname);//用户昵称
+        user.setPortrait(url);//用户头像url
+        userService.addUser(user);
+
+    }
+
+
+    }
