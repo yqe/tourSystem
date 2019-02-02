@@ -75,16 +75,16 @@ public class UserController {
             String uid = userInfo.getUserid();
             User user = userService.getUserById(uid);
             switch (userInfo.getColumnid()){
-                case "age":
+                case "年龄":
                     user.setAge(Integer.valueOf(userInfo.getValue()));
                     break;
-                case "email":
+                case "邮箱":
                     user.setEmail(userInfo.getValue());
                     break;
-                case "phone":
+                case "电话号码":
                     user.setPhone(userInfo.getValue());
                     break;
-                case "description":
+                case "个人简介":
                     user.setDescription(userInfo.getValue());
                     break;
             }
