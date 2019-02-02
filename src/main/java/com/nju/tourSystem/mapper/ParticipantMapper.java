@@ -14,22 +14,22 @@ public interface ParticipantMapper {
     @Select("SELECT * FROM participant WHERE id = #{id}")
     Participant getParticipantById(int id);
 
-    @Select("SELECT * FROM participant WHERE uid = #{uid} and agree = 2")
+    @Select("SELECT * FROM participant WHERE uid = #{uid} and agree = '未通过'")
     List<Participant> getRefusedListByUid(String uid);
 
-    @Select("SELECT * FROM participant WHERE uid = #{uid} and agree = 1")
+    @Select("SELECT * FROM participant WHERE uid = #{uid} and agree = '已通过'")
     List<Participant> getActivityListByUid(String uid);
 
-    @Select("SELECT * FROM participant WHERE uid = #{uid} and agree = 0")
+    @Select("SELECT * FROM participant WHERE uid = #{uid} and agree = '待审核'")
     List<Participant> getApplicationListByUid(String uid);
 
-    @Select("SELECT * FROM participant WHERE aid = #{aid} and agree = 2")
+    @Select("SELECT * FROM participant WHERE aid = #{aid} and agree = '未通过'")
     List<Participant> getRefusedList(int aid);
 
-    @Select("SELECT * FROM participant WHERE aid = #{aid} and agree = 1")
+    @Select("SELECT * FROM participant WHERE aid = #{aid} and agree = '已通过'")
     List<Participant> getParticipantList(int aid);
 
-    @Select("SELECT * FROM participant WHERE aid = #{aid} and agree = 0")
+    @Select("SELECT * FROM participant WHERE aid = #{aid} and agree = '待审核'")
     List<Participant> getApplicationList(int aid);
 
     @Delete("DELETE FROM participant WHERE id = #{id}")

@@ -144,7 +144,7 @@ public class ActivityController {
             Participant participant = new Participant();
             participant.setUid(uid);
             participant.setAid(aid);
-            participant.setAgree(0);
+            participant.setAgree("待审核");
             Date d = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             participant.setScore(0);
@@ -190,8 +190,8 @@ public class ActivityController {
      */
     @ApiOperation("出游申请操作")
     @RequestMapping(value = "/applicationAgreement/{id},{agree}", method = RequestMethod.GET)
-    public ResponseEntity<JsonResponse> applicationAgreement(@PathVariable("id") int id,@PathVariable("agree") int agree) {
-        //agree 1为通过，2为拒绝
+    public ResponseEntity<JsonResponse> applicationAgreement(@PathVariable("id") int id,@PathVariable("agree") String agree) {
+        //agree 操作分为 已通过 和 未通过
         JsonResponse r = new JsonResponse();
         try {
             Participant participant = participantService.getParticipantById(id);
