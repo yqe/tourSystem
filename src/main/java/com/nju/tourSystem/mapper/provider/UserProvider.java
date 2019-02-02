@@ -15,7 +15,7 @@ public class UserProvider {
             INSERT_INTO(TABLE_NAME);
             VALUES("username","#{user.username,javaType=String,jdbcType=VARCHAR}");
             VALUES("email","#{user.email,javaType=String,jdbcType=VARCHAR}");
-            VALUES("password","#{user.password,javaType=String,jdbcType=VARCHAR}");
+            VALUES("portrait","#{user.portrait,javaType=String,jdbcType=VARCHAR}");
             VALUES("phone","#{user.phone,javaType=String,jdbcType=VARCHAR}");
             VALUES("description","#{user.description,javaType=String,jdbcType=VARCHAR}");
             VALUES("age","#{user.age,javaType=int,jdbcType=INTEGER}");
@@ -31,7 +31,7 @@ public class UserProvider {
         BEGIN();
         UPDATE(TABLE_NAME);
         SET("username = #{user.username,javaType=String,jdbcType=VARCHAR}");
-        SET("password = #{user.password,javaType=String,jdbcType=VARCHAR}");
+        SET("portrait = #{user.portrait,javaType=String,jdbcType=VARCHAR}");
         SET("phone = #{user.phone,javaType=String,jdbcType=VARCHAR}");
         SET("email = #{user.email,javaType=String,jdbcType=VARCHAR}");
         SET("description = #{user.description,javaType=String,jdbcType=VARCHAR}");
