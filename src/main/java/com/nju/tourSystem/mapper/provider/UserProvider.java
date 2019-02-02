@@ -13,6 +13,7 @@ public class UserProvider {
         if(user!=null){
             BEGIN();
             INSERT_INTO(TABLE_NAME);
+            VALUES("id","#{user.id,javaType=String,jdbcType=VARCHAR}");
             VALUES("username","#{user.username,javaType=String,jdbcType=VARCHAR}");
             VALUES("email","#{user.email,javaType=String,jdbcType=VARCHAR}");
             VALUES("portrait","#{user.portrait,javaType=String,jdbcType=VARCHAR}");
@@ -37,7 +38,7 @@ public class UserProvider {
         SET("description = #{user.description,javaType=String,jdbcType=VARCHAR}");
         SET("age = #{user.age,javaType=int,jdbcType=INTEGER}");
         SET("balance = #{user.balance,javaType=double,jdbcType=DOUBLE}");
-        WHERE("id = #{user.id,javaType=int,jdbcType=INTEGER}");
+        WHERE("id = #{user.id,javaType=String,jdbcType=VARCHAR}");
         return SQL();
     }
 }
