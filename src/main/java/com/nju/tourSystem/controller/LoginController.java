@@ -3,9 +3,12 @@ package com.nju.tourSystem.controller;
 
 import com.nju.tourSystem.entity.JsonResponse;
 import com.nju.tourSystem.entity.Login;
+import com.nju.tourSystem.entity.User;
+import com.nju.tourSystem.service.UserService;
 import io.swagger.annotations.Api;
 //import net.sf.json.JSONObject;
 //import com.alibaba.fastjson.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,6 +33,8 @@ import java.net.URL;
 @RestController
 @RequestMapping("/login/*")
 public class LoginController {
+    @Autowired
+    UserService userService;
 
     @ResponseBody
     @RequestMapping(value = "/decodeUserInfo", method = RequestMethod.POST)
@@ -85,6 +90,13 @@ public class LoginController {
                 String o_id = resultBuffer.substring(third+2,forth-1);
                 System.out.println(s_key);
                 System.out.println(o_id);
+
+                //登录时存取用户信息到数据库
+//                User user = new User();
+//                user.setId(o_id);//用户Id
+//                user.setUsername("黄勇");//用户昵称
+//                user.setPortrait("111");//用户头像url
+//                userService.addUser(user);
 
                 Login login = new Login();
                 login.setS_key(s_key);
