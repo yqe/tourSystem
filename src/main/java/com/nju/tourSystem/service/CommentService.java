@@ -7,8 +7,7 @@ import java.util.List;
 
 public interface CommentService {
     Comment getCommentById(int id);
-    List<Comment> getNewCommentListByReceiverUid(String receiverUid);
-    List<Comment> getHistoryCommentListByReceiverUid(String receiverUid);
+    List<Comment> getCommentListByReceiverUid(String receiverUid);
     Boolean addComment(Comment comment);
     Boolean updateComment(Comment comment);
 }

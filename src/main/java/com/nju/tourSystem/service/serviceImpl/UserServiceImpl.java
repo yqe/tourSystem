@@ -35,7 +35,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Boolean addUser(User user) {
-        return userMapper.insert(user);
+        if(getUserById(user.getId()) != null)
+            return updateUser(user);
+        else
+            return userMapper.insert(user);
     }
 
     @Override
@@ -43,12 +46,4 @@ public class UserServiceImpl implements UserService {
         return userMapper.update(user);
     }
 
-    @Override
-    public Boolean login(String email, String password) {
-        User user = getUserByEmail(email);
-        if(user != null)
-            return user.getPassword().equals(password);
-        else
-            return false;
-    }
 }

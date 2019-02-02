@@ -11,5 +11,4 @@ public interface UserService {
     List<User> searchUser(String keyword);
     Boolean addUser(User user);
     Boolean updateUser(User user);
-    Boolean login(String email, String password);
 }

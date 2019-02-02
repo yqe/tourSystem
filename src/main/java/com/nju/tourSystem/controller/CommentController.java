@@ -67,26 +67,25 @@ public class CommentController {
         return ResponseEntity.ok(r);
     }
 
-    /**
-     *
-     * @author yqe
-     */
-    @ApiOperation("更新评论")
-    @RequestMapping(value = "/updateComment", method = RequestMethod.POST)
-    public ResponseEntity<JsonResponse> updateComment(@RequestBody Comment comment) {
-        JsonResponse r = new JsonResponse();
-        try {
-            comment.setChecked(1);
-            Boolean state = commentService.updateComment(comment);
-            r.setData(state);
-            r.setStatus("ok");
-        } catch (Exception e) {
-            r.setData(e.getClass().getName() + ":" + e.getMessage());
-            r.setStatus("error");
-            e.printStackTrace();
-        }
-        return ResponseEntity.ok(r);
-    }
+//    /**
+//     *
+//     * @author yqe
+//     */
+//    @ApiOperation("更新评论")
+//    @RequestMapping(value = "/updateComment", method = RequestMethod.POST)
+//    public ResponseEntity<JsonResponse> updateComment(@RequestBody Comment comment) {
+//        JsonResponse r = new JsonResponse();
+//        try {
+//            Boolean state = commentService.updateComment(comment);
+//            r.setData(state);
+//            r.setStatus("ok");
+//        } catch (Exception e) {
+//            r.setData(e.getClass().getName() + ":" + e.getMessage());
+//            r.setStatus("error");
+//            e.printStackTrace();
+//        }
+//        return ResponseEntity.ok(r);
+//    }
 
     /**
      * @author yqe
@@ -123,7 +122,7 @@ public class CommentController {
     public ResponseEntity<JsonResponse> commentInfo(@PathVariable String receiverID) {
         JsonResponse r = new JsonResponse();
         try {
-            List<Comment> commentList = commentService.getNewCommentListByReceiverUid(receiverID);
+            List<Comment> commentList = commentService.getCommentListByReceiverUid(receiverID);
             List<UserComment> userList = getUserComment(commentList);
             r.setData(userList);
             r.setStatus("ok");
@@ -135,24 +134,5 @@ public class CommentController {
         return ResponseEntity.ok(r);
     }
 
-    /**
-     * @author yqe
-     */
-    @ApiOperation("根据接收者ID获取历史留言")
-    @RequestMapping(value = "historyCommentInfoList/{receiverID}", method = RequestMethod.GET)
-    public ResponseEntity<JsonResponse> historyCommentInfoList(@PathVariable String receiverID) {
-        JsonResponse r = new JsonResponse();
-        try {
-            List<Comment> commentList = commentService.getHistoryCommentListByReceiverUid(receiverID);
-            List<UserComment> userList = getUserComment(commentList);
-            r.setData(userList);
-            r.setStatus("ok");
-        } catch (Exception e) {
-            r.setData(e.getClass().getName() + ":" + e.getMessage());
-            r.setStatus("error");
-            e.printStackTrace();
-        }
-        return ResponseEntity.ok(r);
-    }
 
 }

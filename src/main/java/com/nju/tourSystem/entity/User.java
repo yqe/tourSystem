@@ -6,7 +6,7 @@ public class User {
     private String username;
     private String email;
     private String phone;
-    private String password;
+    private String portrait;
     private String description;
     private double balance;
 
@@ -53,12 +53,12 @@ public class User {
         this.phone = phone;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPortrait() {
+        return portrait;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPortrait(String portrait) {
+        this.portrait = portrait;
     }
 
     public String getDescription() {

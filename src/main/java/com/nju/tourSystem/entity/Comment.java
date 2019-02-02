@@ -8,7 +8,6 @@ public class Comment {
     private String activityName;
     private String comment;
     private String commentTime;
-    private int checked;
 
     public Comment() {
     }
@@ -65,11 +64,4 @@ public class Comment {
         this.commentTime = commentTime;
     }
 
-    public int getChecked() {
-        return checked;
-    }
-
-    public void setChecked(int checked) {
-        this.checked = checked;
-    }
 }

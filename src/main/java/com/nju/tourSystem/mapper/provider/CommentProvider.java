@@ -19,7 +19,6 @@ public class CommentProvider {
             VALUES("receiverUid","#{comment.receiverUid,javaType=String,jdbcType=VARCHAR}");
             VALUES("comment","#{comment.comment,javaType=String,jdbcType=VARCHAR}");
             VALUES("commentTime","#{comment.commentTime,javaType=String,jdbcType=VARCHAR}");
-            VALUES("checked","#{comment.checked,javaType=int,jdbcType=TINYINT}");
         }
         return SQL();
 
@@ -36,7 +35,6 @@ public class CommentProvider {
         SET("receiverUid = #{comment.receiverUid,javaType=String,jdbcType=VARCHAR}");
         SET("comment = #{comment.comment,javaType=String,jdbcType=VARCHAR}");
         SET("commentTime = #{comment.commentTime,javaType=String,jdbcType=VARCHAR}");
-        SET("checked = #{comment.checked,javaType=int,jdbcType=TINYINT}");
         WHERE("id = #{comment.id,javaType=int,jdbcType=INTEGER}");
         return SQL();
     }

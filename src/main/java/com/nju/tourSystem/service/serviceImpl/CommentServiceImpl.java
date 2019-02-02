@@ -19,14 +19,10 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public List<Comment> getNewCommentListByReceiverUid(String receiverUid) {
-        return commentMapper.getNewCommentListByReceiverUid(receiverUid);
+    public List<Comment> getCommentListByReceiverUid(String receiverUid) {
+        return commentMapper.getCommentListByReceiverUid(receiverUid);
     }
 
-    @Override
-    public List<Comment> getHistoryCommentListByReceiverUid(String receiverUid) {
-        return commentMapper.getHistoryCommentListByReceiverUid(receiverUid);
-    }
 
     @Override
     public Boolean addComment(Comment comment) {

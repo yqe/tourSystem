@@ -1,6 +1,7 @@
 package com.nju.tourSystem.controller;
 
 
+import com.nju.tourSystem.PO.UserInfo;
 import com.nju.tourSystem.entity.JsonResponse;
 import com.nju.tourSystem.entity.User;
 import com.nju.tourSystem.service.UserService;
@@ -66,52 +67,29 @@ public class UserController {
      *
      * @author yqe
      */
-    @ApiOperation("添加用户")
-    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
-    public ResponseEntity<JsonResponse> addUser(@RequestBody User user) {
-        JsonResponse r = new JsonResponse();
-        try {
-            Boolean state = userService.addUser(user);
-            r.setData(state);
-            r.setStatus("ok");
-        } catch (Exception e) {
-            r.setData(e.getClass().getName() + ":" + e.getMessage());
-            r.setStatus("error");
-            e.printStackTrace();
-        }
-        return ResponseEntity.ok(r);
-    }
-
-    /**
-     *
-     * @author yqe
-     */
     @ApiOperation("更新用户信息")
     @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
-    public ResponseEntity<JsonResponse> updateUser(@RequestBody User user) {
+    public ResponseEntity<JsonResponse> updateUser(@RequestBody UserInfo userInfo) {
         JsonResponse r = new JsonResponse();
         try {
-            Boolean state = userService.updateUser(user);
-            r.setData(state);
-            r.setStatus("ok");
-        } catch (Exception e) {
-            r.setData(e.getClass().getName() + ":" + e.getMessage());
-            r.setStatus("error");
-            e.printStackTrace();
-        }
-        return ResponseEntity.ok(r);
-    }
+            String uid = userInfo.getUserid();
+            User user = userService.getUserById(uid);
+            switch (userInfo.getColumnid()){
+                case "age":
+                    user.setAge(Integer.valueOf(userInfo.getValue()));
+                    break;
+                case "email":
+                    user.setEmail(userInfo.getValue());
+                    break;
+                case "phone":
+                    user.setPhone(userInfo.getValue());
+                    break;
+                case "description":
+                    user.setDescription(userInfo.getValue());
+                    break;
+            }
 
-    /**
-     *
-     * @author yqe
-     */
-    @ApiOperation("登录验证")
-    @RequestMapping(value = "/login/{email},{password}", method = RequestMethod.GET)
-    public ResponseEntity<JsonResponse> login(@PathVariable("email") String email, @PathVariable("password") String password) {
-        JsonResponse r = new JsonResponse();
-        try {
-            Boolean state = userService.login(email, password);
+            Boolean state = userService.updateUser(user);
             r.setData(state);
             r.setStatus("ok");
         } catch (Exception e) {

@@ -14,10 +14,7 @@ public interface CommentMapper {
     Comment getCommentById(int id);
 
     @Select("SELECT * FROM comment WHERE receiverUid = #{receiverUid} and checked = 0 ORDER BY commentTime DESC")
-    List<Comment> getNewCommentListByReceiverUid(String receiverUid);
-
-    @Select("SELECT * FROM comment WHERE receiverUid = #{receiverUid} and checked = 1 ORDER BY commentTime DESC")
-    List<Comment> getHistoryCommentListByReceiverUid(String receiverUid);
+    List<Comment> getCommentListByReceiverUid(String receiverUid);
 
     @InsertProvider(type = CommentProvider.class,method = "insert")
     Boolean insert(@Param("comment")Comment comment);
