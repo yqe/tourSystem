@@ -167,7 +167,7 @@ public class ActivityControllerTest {
     /**
      * 测试获取参加的出游列表
      */
-    @Test
+//    @Test
     public void myActivityListTest() throws Exception {
         String id = "odTDj5BIrPqZBG2qkh6DpXxKLlng";
         mvc.perform(MockMvcRequestBuilders.get("/activity/myActivityList/"+id)

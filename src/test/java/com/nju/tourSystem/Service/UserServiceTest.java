@@ -42,7 +42,7 @@ public class UserServiceTest {
     }
 
     /**
-     * 测试查找用户
+     * 测试更新用户
      */
     @Test
     public void updateUserTest() throws Exception {
