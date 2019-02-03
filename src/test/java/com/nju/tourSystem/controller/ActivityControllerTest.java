@@ -154,7 +154,7 @@ public class ActivityControllerTest {
     /**
      * 测试出游申请操作
      */
-    @Test
+//    @Test
     public void applicationAgreementTest() throws Exception {
         int id = 4;
         mvc.perform(MockMvcRequestBuilders.get("/activity/applicationAgreement/"+id+","+"已通过")

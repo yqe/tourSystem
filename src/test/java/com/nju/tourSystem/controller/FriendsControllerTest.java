@@ -52,7 +52,7 @@ public class FriendsControllerTest {
     /**
      * 测试同意添加好友
      */
-    @Test
+//    @Test
     public void friendsAgreementTest() throws Exception {
         int id = 1;
         mvc.perform(MockMvcRequestBuilders.get("/friends/friendsAgreement/"+id)

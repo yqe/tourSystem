@@ -69,9 +69,9 @@ public class UserControllerTest {
     /**
      * 测试更新用户
      */
-    @Test
+//    @Test
     public void updateUserTest() throws Exception {
-        String json="{\"id\":\"1\",\"columnid\":\"年龄\",\"value\":\"25\"}";
+        String json="{\"id\":\"odTDj5BIrPqZBG2qkh6DpXxKLlng\",\"columnid\":\"年龄\",\"value\":\"25\"}";
         mvc.perform(MockMvcRequestBuilders.post("/user/updateUser")
                 .accept(MediaType.APPLICATION_JSON_UTF8)
                 .content(json.getBytes())
