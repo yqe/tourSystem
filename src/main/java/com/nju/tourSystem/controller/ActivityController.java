@@ -1,5 +1,6 @@
 package com.nju.tourSystem.controller;
 
+import com.nju.tourSystem.PO.ApplicationUserList;
 import com.nju.tourSystem.entity.Activity;
 import com.nju.tourSystem.entity.JsonResponse;
 import com.nju.tourSystem.entity.Participant;
@@ -415,4 +416,30 @@ public class ActivityController {
         return ResponseEntity.ok(r);
     }
 
+
+    /**
+     *
+     * @author yqe
+     */
+    @ApiOperation("根据活动ID获取申请列表")
+    @RequestMapping(value = "/getApplicationList/{aid}", method = RequestMethod.GET)
+    public ResponseEntity<JsonResponse> getApplicationList(@PathVariable("aid")int aid) {
+        JsonResponse r = new JsonResponse();
+        try {
+            List <Participant> participantList = participantService.getApplicationList(aid);
+            List <User> userList = new ArrayList<>();
+            ApplicationUserList applicationUserList = new ApplicationUserList();
+            for (Participant aParticipantList : participantList)
+                userList.add(userService.getUserById(aParticipantList.getUid()));
+            applicationUserList.setParticipantList(participantList);
+            applicationUserList.setUserList(userList);
+            r.setData(applicationUserList);
+            r.setStatus("ok");
+        } catch (Exception e) {
+            r.setData(e.getClass().getName() + ":" + e.getMessage());
+            r.setStatus("error");
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok(r);
+    }
 }
