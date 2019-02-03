@@ -1,6 +1,6 @@
 package com.nju.tourSystem.controller;
 
-import com.nju.tourSystem.PO.ApplicationUserList;
+import com.nju.tourSystem.PO.ApplicationUser;
 import com.nju.tourSystem.entity.Activity;
 import com.nju.tourSystem.entity.JsonResponse;
 import com.nju.tourSystem.entity.Participant;
@@ -427,12 +427,22 @@ public class ActivityController {
         JsonResponse r = new JsonResponse();
         try {
             List <Participant> participantList = participantService.getApplicationList(aid);
-            List <User> userList = new ArrayList<>();
-            ApplicationUserList applicationUserList = new ApplicationUserList();
-            for (Participant aParticipantList : participantList)
-                userList.add(userService.getUserById(aParticipantList.getUid()));
-            applicationUserList.setParticipantList(participantList);
-            applicationUserList.setUserList(userList);
+            List<ApplicationUser> applicationUserList = new ArrayList<>();
+            for (Participant participant : participantList){
+                User user = userService.getUserById(participant.getUid());
+                ApplicationUser applicationUser = new ApplicationUser();
+                applicationUser.setId(participant.getId());
+                applicationUser.setUsername(user.getUsername());
+                applicationUser.setPortrait(user.getPortrait());
+                applicationUser.setUid(user.getId());
+                applicationUser.setAge(user.getAge());
+                applicationUser.setApplyTime(participant.getApplyTime());
+                applicationUser.setPhone(user.getPhone());
+                applicationUser.setEmail(user.getEmail());
+
+                applicationUserList.add(applicationUser);
+            }
+
             r.setData(applicationUserList);
             r.setStatus("ok");
         } catch (Exception e) {
