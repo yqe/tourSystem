@@ -9,4 +9,5 @@ public interface TourRecordService {
     boolean updateTourRecord(TourRecord tourRecord);
     TourRecord getTourRecordById(int id);
     List<TourRecord> getTourRecordByUid(String uid);
+    List<TourRecord> getTourRecordByContent(String content);
 }

@@ -18,6 +18,9 @@ public interface TourRecordMapper {
     @Select("SELECT * FROM tourRecord WHERE uid = #{uid}")
     List<TourRecord> getTourRecordByUid(String uid);
 
+    @Select("SELECT * FROM tourRecord WHERE content LIKE CONCAT(CONCAT('%', #{content}), '%')")
+    List<TourRecord> getTourRecordByContent(String content);
+
     @InsertProvider(type = TourRecordProvider.class,method = "insert")
     Boolean insert(@Param("tourRecord")TourRecord tourRecord);
 

@@ -31,4 +31,9 @@ public class TourRecordServiceImpl implements TourRecordService {
     public List<TourRecord> getTourRecordByUid(String uid) {
         return tourRecordMapper.getTourRecordByUid(uid);
     }
+
+    @Override
+    public List<TourRecord> getTourRecordByContent(String content) {
+        return tourRecordMapper.getTourRecordByContent(content);
+    }
 }
