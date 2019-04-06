@@ -10,4 +10,5 @@ public interface TourRecordService {
     TourRecord getTourRecordById(int id);
     List<TourRecord> getTourRecordByUid(String uid);
     List<TourRecord> getTourRecordByContent(String content);
+    List<TourRecord> getHotTourRecord();
 }

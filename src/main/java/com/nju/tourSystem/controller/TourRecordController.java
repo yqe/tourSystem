@@ -82,6 +82,26 @@ public class TourRecordController {
      *
      * @author yqe
      */
+    @ApiOperation("获取热门游记")
+    @RequestMapping(value = "/getHotArticle", method = RequestMethod.GET)
+    public ResponseEntity<JsonResponse> getHotArticle() {
+        JsonResponse r = new JsonResponse();
+        try {
+            List<TourRecord> tourRecordList = tourRecordService.getHotTourRecord();
+            r.setData(tourRecordList);
+            r.setStatus("ok");
+        } catch (Exception e) {
+            r.setData(e.getClass().getName() + ":" + e.getMessage());
+            r.setStatus("error");
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok(r);
+    }
+
+    /**
+     *
+     * @author yqe
+     */
     @ApiOperation("发布游记")
     @RequestMapping(value = "/publishArticle", method = RequestMethod.POST)
     public ResponseEntity<JsonResponse> publishArticle(@RequestBody TourRecord tourRecord) {

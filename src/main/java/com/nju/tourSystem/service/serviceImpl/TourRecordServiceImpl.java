@@ -36,4 +36,9 @@ public class TourRecordServiceImpl implements TourRecordService {
     public List<TourRecord> getTourRecordByContent(String content) {
         return tourRecordMapper.getTourRecordByContent(content);
     }
+
+    @Override
+    public List<TourRecord> getHotTourRecord() {
+        return tourRecordMapper.getHotTourRecord();
+    }
 }

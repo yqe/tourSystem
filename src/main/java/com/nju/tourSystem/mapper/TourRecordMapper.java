@@ -21,6 +21,9 @@ public interface TourRecordMapper {
     @Select("SELECT * FROM tourRecord WHERE content LIKE CONCAT(CONCAT('%', #{content}), '%')")
     List<TourRecord> getTourRecordByContent(String content);
 
+    @Select("SELECT * FROM tourRecord order by readNum DESC limit 10")
+    List<TourRecord> getHotTourRecord();
+
     @InsertProvider(type = TourRecordProvider.class,method = "insert")
     Boolean insert(@Param("tourRecord")TourRecord tourRecord);
 
